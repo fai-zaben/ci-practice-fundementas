@@ -16,7 +16,6 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
-      - checkout
       - run: echo "My pipeline id is << pipeline.id >> and my git branch is << pipeline.git.branch >>."  
 
 workflows:
