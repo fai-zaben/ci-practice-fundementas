@@ -58,3 +58,5 @@ workflows:
             - print_hello
       - print-name
       - create-env-var
+      - send-data
+      - receive-data
