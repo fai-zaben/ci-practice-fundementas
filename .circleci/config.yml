@@ -23,6 +23,13 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run: echo $name
+  
+  create-env-var:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: export MY_ENV_VAR="FOO"' /
+             echo $MY_ENV_VAR
 
 workflows:
   say-hello-workflow:
@@ -33,3 +40,4 @@ workflows:
           requires:
             - print_hello
       - print-name
+      - create-env-var
