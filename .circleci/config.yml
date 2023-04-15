@@ -17,6 +17,12 @@ jobs:
       - image: cimg/base:stable
     steps:
       - run: echo "My pipeline id is << pipeline.id >> and my git branch is << pipeline.git.branch >>."  
+#  Environment Variables
+  print-name:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: echo $name
 
 workflows:
   say-hello-workflow:
