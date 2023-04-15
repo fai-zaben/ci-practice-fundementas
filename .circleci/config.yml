@@ -12,19 +12,17 @@ jobs:
     steps:
       - run: "echo world"
       
-  say-hello:
+  project-info:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+      - run: echo "My pipeline id is << pipeline.id >> and my git branch is << pipeline.git.branch >>."  
 
 workflows:
   say-hello-workflow:
     jobs:
-      - say-hello
+      - project-info
       - print_hello
       - print_world:
           requires:
