@@ -59,4 +59,6 @@ workflows:
       - print-name
       - create-env-var
       - send-data
-      - receive-data
+      - receive-data:
+          requires:
+           - send-data
