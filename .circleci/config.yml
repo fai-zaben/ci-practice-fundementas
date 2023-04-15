@@ -30,6 +30,23 @@ jobs:
     steps:
       - run: echo 'export MY_ENV_VAR="FOO"' >> "$BASH_ENV"
       - run: echo $MY_ENV_VAR
+#  Communicate Environment Variables between two jobs
+  send-data:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: echo "data to send" > output.txt
+      - persist_to_workspace:
+          root: /tmp/data
+          paths: 
+            - output.txt
+  receive-data:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - attach_workspace:
+         at: /tmp/data
+      - run: cat /tmp/data/output.txt
 
 workflows:
   say-hello-workflow:
