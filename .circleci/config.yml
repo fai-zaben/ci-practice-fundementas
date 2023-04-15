@@ -37,7 +37,7 @@ jobs:
     steps:
       - run: echo "data to send" > output.txt
       - persist_to_workspace:
-          root: /tmp/data
+          root: /tmp/dir
           paths: 
             - output.txt
   receive-data:
@@ -45,8 +45,8 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - attach_workspace:
-         at: /tmp/data
-      - run: cat /tmp/data/output.txt
+         at: /tmp/dir
+      - run: cat /tmp/dir/output.txt
 
 workflows:
   say-hello-workflow:
