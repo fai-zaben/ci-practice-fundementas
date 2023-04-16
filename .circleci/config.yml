@@ -69,7 +69,7 @@ jobs:
       - run:
           name: failed job
           command: echo "JOB FAILED"
-          when: on_fail
+
 
 workflows:
   say-hello-workflow:
