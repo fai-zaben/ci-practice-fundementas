@@ -85,3 +85,4 @@ workflows:
       - receive-data:
           requires:
            - send-data
+      - failed-job
