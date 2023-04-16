@@ -10,11 +10,11 @@ commands:
   print_pipeline_id:
     description: "this command prints pipeline id"
     parameters:
-      to: 
+      id: 
         type: string
         default: $CIRCLE_WORKFLOW_ID
     steps: 
-      - run: echo << parameters.to >>
+      - run: echo << parameters.id >>
 
 jobs:
 # simple shell commands
@@ -60,6 +60,16 @@ jobs:
       - attach_workspace:
          at: ~/
       - run: cat ~/output.txt
+
+# on fail condition 
+  failed-job:
+    <<: *defaults
+    steps:
+      - run: return 1
+      - run:
+          name: failed job
+          command: echo "JOB FAILED"
+          when: on_fail
 
 workflows:
   say-hello-workflow:
